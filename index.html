@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" class="js">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/dist/css/bundle.css">
+        <title>Thesis Code Challenge</title>
+    </head>
+    <body>
+        <div id="siteWrapper">
+            <div class="bg asyncImage" data-src='../dist/images/main-bg-compressor.png'></div>
+            <header class="header">
+                <div class="header__bar cols cols--align-middle">
+                    <nav class="header__nav header__nav--primary nav--inline">
+                        <a href="\">
+                            <div class="logo">
+                                <span class="logo__icon">
+                                    <img src="/dist/images/logo.svg" alt="Stamp Logo">
+                                </span>
+                            </div>
+                        </a>
+                        <ul class="header__navList nav__list u-desktop-only">
+                            <li class="header__navListItem">
+                                <a class="link link--thick link--discrete" href="#">About</a>
+                            </li>
+                            <li class="header__navListItem">
+                                <a class="link link--thick link--discrete" href="#">Integrations</a>
+                            </li>
+                            <li class="header__navListItem">
+                                <a class="link link--thick link--discrete" href="#">Pricing</a>
+                            </li>
+                            <li class="header__navListItem">
+                                <a class="link link--thick link--discrete" href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav class="header__nav header__nav--secondary nav--inline">
+                        <a class="burgerMenu u-mobile-only menu-toggle" href="#" title="Toggle Menu">
+                            <span class="burgerMenu__bar burgerMenu__bar--top"></span>
+                            <span class="burgerMenu__bar burgerMenu__bar--middle"></span>
+                            <span class="burgerMenu__bar burgerMenu__bar--bottom"></span>
+                        </a>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- Main content -->
+            <main id="mainContent">
+                <div class="connect connect--page">
+                    <div class="container">
+                    	<div class="cols cols--m-2">
+                    		<div class="col connect__option connect__option--info">
+                                <div>
+                    				<div class="connect__optionHeader">
+                    					<h1 class="title title--internal">Simple Way to Organize Your Inspirations</h1>
+                    				</div>
+                    				<p>I think what motivates people is not great hate, but great love for other people.</p>
+                                </div>
+                    		</div>
+
+                    		<div class="col connect__option connect__option--signup">
+                                <form id="signup_form" action="" method="post">
+                                    <div class="connect__optionHeader">
+                                        <h2 class="subtitle subtitle--small">SIGN UP FOR FREE</h2>
+                                    </div>
+                                    <div class="form__row">
+                                        <div class="form__group">
+                                            <input type="text" name="name" value="" placeholder="Name">
+                                            <input type="email" name="email" value="" placeholder="E-mail">
+                                            <input type="password" name="password" placeholder="Password">
+                                        </div>
+                                        <button name="login_submit" type="submit" value="Sign Up" class="cta">Sign up</button>
+                                    </div>
+                                    <div class="form__actions connect__optionFooter">
+                                        <p>
+                                           By clicking "Sign up" I agree to our <a class="link link--discrete link--bold" href="#">Terms of Service</a>
+                                        </p>
+                                    </div>
+                                </form>
+                    		</div>
+                    	</div>
+                    </div>
+                </div>
+            </main>
+            <footer class="footer">
+                <div class="footer__bar footer__bar--bottom cols cols--align-middle">
+                    <div class="footer__copyright"><span class="footer__copyrightSymbol">©</span>2016 Stamp. All rights reserved</div>
+                    <nav class="footer__nav footer__nav--secondary">
+                        <ul class="footer__navList footer__navList--legal">
+                            <li>
+                                <a class="link link--thick link--discrete" href="#">Help</a>
+                            </li>
+                            <li>
+                                <a class="link link--thick link--discrete" href="#">Terms Of Use</a>
+                            </li>
+                            <li>
+                                <a class="link link--thick link--discrete" href="#">Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav class="side-menu">
+            <ul>
+            <li><a class="item" href="#">About</a></li>
+            <li><a class="item" href="#">Integrations</a></li>
+            <li><a class="item" href="#">Pricing</a></li>
+            <li><a class="item" href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Scripts -->
+        <script>
+          (function() {
+              'use strict';
+
+              console.log('[Thesis Code Challenge!]');
+
+              /*
+              * Image Loading
+              */
+              // Page is loaded
+              const objects = document.getElementsByClassName('asyncImage');
+
+              Array.from(objects).map((item) => {
+                // Start loading image
+                const img = new Image();
+                img.src = item.dataset.src;
+
+                // Once image is loaded replace the src of the HTML element
+                img.onload = () => {
+                    item.classList.remove('asyncImage');
+                    return item.nodeName === 'IMG' ?
+                        item.src = item.dataset.src :
+                        item.style.backgroundImage = `url(${item.dataset.src})`;
+                    };
+                });
+
+                
+                /*
+                * Mobile Menu
+                */
+                var menuToggle = document.querySelector('.menu-toggle');
+                var body       = document.body;
+
+                  menuToggle.addEventListener('click', function(ev) {
+                        ev.preventDefault();
+                        body.classList.toggle('menu-active');
+                  });
+            })();
+        </script>
+    </body>
+</html>
